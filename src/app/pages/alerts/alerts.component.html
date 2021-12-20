@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<main class="container">
+    <div class="row">
+        <div class="col s12">
+            <h3>Alertas y notificaciones </h3>
+
+            <div class="divider"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col m6">
+            <div class="row">
+                <div class="col s12">
+                    <h4>Ventana emergente</h4>
+                </div>
+                <div class="col s12">
+                    <!-- Modal Trigger -->
+                    <a class="waves-effect waves-light btn modal-trigger blue" href="#modal1">Abrir</a>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <h4>Modal Header</h4>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In quod maxime perspiciatis
+                                delectus sint nemo ipsa accusamus eaque eum, ullam saepe dolor incidunt explicabo a
+                                facere placeat aperiam. Aperiam, ipsa!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="modal-close waves-effect waves-green btn-flat" (click)="cerrarModal()">Agree</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col m6">
+            <div class="row">
+                <div class="col s12">
+                    <h4>Toast</h4>
+                </div>
+                <div class="col s12">
+                    <a onclick="M.toast({html: 'Alerta'})" class="btn grey darken-3">Toast!</a>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <h4>Notificaciones</h4>
+        </div>
+        <div class="col s12">
+
+            <div class="row">
+                <div class="col m12" [ngStyle]="{'margin-top': '20px'}">
+                    <button type="button" class="btn black-text yellow darken-1" (click)="warn()">Advertencia</button>
+
+                </div>
+                <div class="col m12" [ngStyle]="{'margin-top': '20px'}">
+                    <button type="button" class="btn  green" (click)="success()">Exito</button>
+
+                </div>
+
+                <div class="col m12" [ngStyle]="{'margin-top': '20px'}">
+                    <button type="button" class="btn  red" (click)="error()">Error</button>
+                </div>
+
+                <div class="col m12" [ngStyle]="{'margin-top': '20px'}">
+                    <button type="button" class="btn  blue" (click)="info()">Informativo</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>
+
+<simple-notifications [options]="options"></simple-notifications>

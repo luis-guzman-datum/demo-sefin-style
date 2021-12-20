@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="container" id="htmlData">
+    <div class="row">
+        <div class="col s12">
+            <h3>Mantenimiento de usuarios</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <app-crud-list *ngIf="pantalla.pantalla=='lista'"  [listaUsers]="listaUsers" (clickEliminar)="clickEliminar($event)" (clickModificar)="clickModificar($event)"
+            (clickAgregar)="clickAgregar($event)" >
+        </app-crud-list>
+
+
+
+        <app-crud-form *ngIf="pantalla.pantalla=='formulario'" [formulario]="formulario" (clickGuardarModificarForm)="clickGuardarModificarForm($event)" (clickCancelarForm)="clickCancelarForm($event)"></app-crud-form>
+    </div>
+</div>
+
+<simple-notifications [options]="options"></simple-notifications>
+
+
+<app-si-no  *ngIf="alerta.estado" [alerta]="alerta" (OK)="OK($event)" (CANCELAR)="CANCELAR($event)" ></app-si-no>
+
+
+<app-footer></app-footer>
+
+<div class="test-modal-container"></div>

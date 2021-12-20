@@ -1,0 +1,29 @@
+
+<main class="container" >
+ <div class="row">
+   <div class="col m12">
+    <p class="right" style="margin-right: 50px;">
+  
+      <img src="assets/images/alvin.png" class="user">
+      
+      </p>
+   </div>
+ </div>
+
+  <div class="row">
+    <p class="flow-text">Aplicaciones:</p>
+    <div class="col m2" *ngFor="let d of listaSistemas">
+      <div>
+        <div class="card-content center">
+          <img class="apps-img" [ngClass]="{'img-s-permiso-false': !d.permiso}" src="{{d.logo}}">
+          <p class="center" [ngStyle]="{'height': '120px'}">
+            <span class="card-title activator grey-text text-darken-4">{{d.nombre}}</span>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>

@@ -1,0 +1,98 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h3>PETICIONES HTTP (USERS & POSTS) </h3>
+
+            <div class="divider"></div>
+        </div>
+
+        <div class="col 12">
+            <h4>Información de usuarios</h4>
+        </div>
+        <div class="col s12" style="margin-top: 2%;">
+            <div class="input-field col offset-m6 m6 s12">
+                <i class="material-icons prefix">search</i>
+                <input id="search" type="text" [(ngModel)]="search" name="search">
+                <label for="search">Buscar</label>
+            </div>
+        </div>
+        <div class="col s12">
+            <table class="responsive-table striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr
+                        *ngFor="let d of (listaUsers | filter: search) | paginate: { itemsPerPage: 5, currentPage: p } ">
+                        <td>{{d.id}}</td>
+                        <td>{{d.name}}</td>
+                        <td>{{d.email}}</td>
+                    </tr>
+                    <tr *ngIf="(listaUsers | filter: search ).length==0">
+                        <td colspan="3" class="center">No hay registros</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="center">
+                <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event">
+                </pagination-controls>
+            </div>
+        </div>
+
+        <div class="col s12">
+            <br>
+            <br>
+        </div>
+
+        <div class="col s12">
+            <h4>FAQ's</h4>
+        </div>
+
+
+       
+
+        <div class="col m8 s12 ">
+            <div class="input-field col  s12">
+                <i class="material-icons prefix">search</i>
+                <input id="search2" type="text" [(ngModel)]="search2" name="search2">
+                <label for="search2">Buscar</label>
+            </div>
+            <ul class="collection">
+                <li class="collection-item avatar"
+                    *ngFor="let p of (listaPosts | filter: search2) | paginate: { itemsPerPage: 5, currentPage: p2}">
+                    <i class="material-icons circle grey">person</i>
+                    <span class="title">
+                        <strong>{{p.title}}</strong>
+                    </span>
+                    <p >
+                        {{p.body}}
+                    </p>
+                </li>
+                <li class="collection-item avatar"
+                    *ngIf="( (listaPosts | filter: search2) | paginate: { itemsPerPage: 5, currentPage: p2}).length==0">
+                    <h4 class="center grey-text">No hay posts disponibles</h4>
+                </li>
+            </ul>
+            <div class="center">
+                <pagination-controls  previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p2 = $event">
+                </pagination-controls>
+            </div>
+        </div>
+        <div class="col m4 s12">
+            <p class="center grey-text" [ngStyle]="{'margin-top': '100px'}" >
+                <i class="material-icons" [ngStyle]="{'font-size': '200px'}" >contact_support</i>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>
+
+<simple-notifications [options]="options"></simple-notifications>

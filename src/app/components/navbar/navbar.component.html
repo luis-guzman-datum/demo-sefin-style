@@ -1,0 +1,75 @@
+<ul id="slide-out" class="sidenav ">
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="assets/images/fondo-azul.png">
+            </div>
+            <a><img class="circle" src="{{menuSidebar.imagen}}"></a>
+            <a><span class="white-text name">{{menuSidebar.usuario}}</span></a>
+            <a><span class="white-text email">{{menuSidebar.email}}</span></a>
+        </div>
+    </li>
+
+    <ul class="collapsible">
+
+        <li *ngFor="let m of menuSidebar.menu">
+            <ng-container *ngIf="m.opciones?.length!=0">
+                <div class="collapsible-header"><i class="material-icons">{{m.icono}}</i>{{m.titulo}}</div>
+                <div class="collapsible-body">
+                    <ul>
+                        <li *ngFor="let o of m.opciones">
+                            <a [routerLink]="[o.link]">
+                                <i class="material-icons">{{o.icono}}</i>
+                                {{o.texto}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="m.opciones?.length==0">
+                <a [routerLink]="[m.link]" class="collapsible-header">
+                    <i class="material-icons">{{m.icono}}</i>
+                    {{m.titulo}}
+                </a>
+                <div class="collapsible-body">
+                </div>
+            </ng-container>
+        </li>
+    </ul>
+
+</ul>
+
+
+
+
+
+
+<nav class="white">
+    <div id="side-opt" class="nav-wrapper">
+        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large grey-text text-darken-4">
+            <i class="material-icons">menu</i>
+        </a>
+        <a href="#" class="brand-logo  grey-text text-darken-4">
+            SEFIN
+        </a>
+
+        <ul class="right  ">
+            <li class="black-text">
+                <a class='dropdown-trigger black-text ' href='#' data-target='dropdown1'>
+                    <i class="material-icons right">view_module</i> Mis Apps
+                </a>
+
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<!-- Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content'>
+    <li><a class="disabled">MIS APPS</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li *ngFor="let m of menuSidebar.apps"><a [routerLink]="[m.link]"> <i
+                class="material-icons">{{m.icono}}</i>{{m.texto}}</a></li>
+</ul>

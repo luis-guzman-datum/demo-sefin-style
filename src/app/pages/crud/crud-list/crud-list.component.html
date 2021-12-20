@@ -1,0 +1,56 @@
+<div class="col m4 s12">
+    <br>
+    <button id="clickAgregar" class="btn blue" (click)="clickAgregar.emit()">
+        <i class="material-icons left">add</i>
+        Nuevo Registro
+    </button>
+</div>
+<div class="col m8 s12">
+    <div class="input-field col offset-m6 m6 s12 " id="buscador">
+        <i class="material-icons prefix">search</i>
+        <input id="search" type="text" [(ngModel)]="search" name="search" (ngModelChange)="p=1">
+        <label for="search">Buscar</label>
+        <span class="helper-text" data-error="wrong" data-success="right">
+            {{(listaUsers | filter: search)?.length}} /
+            {{listaUsers.length}}
+        </span>
+    </div>
+</div>
+<div class="col s12">
+    <table class="responsive-table striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let d of (listaUsers | filter: search) | paginate: { itemsPerPage: 8, currentPage: p } ">
+                <td>{{d.id}}</td>
+                <td>{{d.name}}</td>
+                <td>{{d.email}}</td>
+                <td>
+                    <button id="clickEditar" class="btn orange btn-small" title="Modificar"
+                        (click)="clickModificar.emit(d)">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    &nbsp;
+                    <button id="clickEliminar" class="btn red btn-small" title="Eliminar"
+                        (click)="clickEliminar.emit(d)">
+                        <i class="material-icons">delete_forever</i>
+                    </button>
+                </td>
+            </tr>
+            <tr *ngIf="(listaUsers | filter: search ).length==0">
+                <td colspan="4" class="center">No hay registros</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="center" id="pagination-controls">
+        <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event">
+        </pagination-controls>
+    </div>
+</div>
