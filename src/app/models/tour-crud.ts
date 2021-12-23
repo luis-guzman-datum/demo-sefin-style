@@ -29,6 +29,7 @@ export const OpcionesPorDefecto: Step.StepOptions = {
 export const TourCrud: Step.StepOptions[] = [
   {
     attachTo: {
+  
       on: 'bottom',
     },
     buttons: [
@@ -59,6 +60,60 @@ export const TourCrud: Step.StepOptions[] = [
     text: `
               <p >
                 Opciones disponibles para tu perfil.
+              </p>`,
+  },
+  {
+    attachTo: {
+      element: '#chatlink',
+      on: 'bottom',
+    },
+    buttons: [
+      /*   Botones.cancelar, */
+      Botones.anterior,
+      Botones.siguiente,
+    ],
+    classes: 'grey-text card',
+    
+    title: 'CHAT',
+    text: `
+              <p >
+               Conversaciones .
+              </p>`,
+  },
+  {
+    attachTo: {
+      element: '#notylink',
+      on: 'bottom',
+    },
+    buttons: [
+      /*   Botones.cancelar, */
+      Botones.anterior,
+      Botones.siguiente,
+    ],
+    classes: 'grey-text card',
+    
+    title: 'Notificaciones',
+    text: `
+              <p >
+              Notificaciones .
+              </p>`,
+  },
+  {
+    attachTo: {
+      element: '#appLink',
+      on: 'bottom',
+    },
+    buttons: [
+      /*   Botones.cancelar, */
+      Botones.anterior,
+      Botones.siguiente,
+    ],
+    classes: 'grey-text card',
+    
+    title: 'Apps',
+    text: `
+              <p >
+              Apps .
               </p>`,
   },
   {

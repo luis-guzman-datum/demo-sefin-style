@@ -1,3 +1,5 @@
+
+
 /* You can add global styles to this file, and also import other style files */
 @import 'material-icons/iconfont/material-icons.css';
 
@@ -11,6 +13,8 @@ $orange-light-1: #dcd2a3;
 $grey: #545454;
 $grey-light-1: #f4f4f4;
 $grey-light-2: #b4b6be;
+
+$colorTituloGrafico:#464646;
 
 
 
@@ -104,9 +108,9 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   color: $blue-darken-4 !important;
 }
 
-main {
+/* main {
   margin: 2%;
-}
+} */
 
 #mensajes {
   height: auto;
@@ -187,5 +191,44 @@ main {
 
 .apps-img{
   height: 130px;
+  cursor: pointer;
+}
+
+.header {
+  font-weight: 300;
+}
+
+.titulo-grafico{
+  font-weight: 700;
+    color: $colorTituloGrafico;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+.theme-dark-blue .bs-datepicker-head {
+  background-color: $blue-darken-4;
+}
+
+.theme-dark-blue .bs-datepicker-body table td span.selected, .theme-dark-blue .bs-datepicker-body table td.selected span, .theme-dark-blue .bs-datepicker-body table td span[class*=select-]:after, .theme-dark-blue .bs-datepicker-body table td[class*=select-] span:after {
+  background-color: $blue-darken-4;
+}
+
+button:focus {
+  outline: none;
+  color: white;
+  background-color: $blue-darken-4;
+}
+
+.table-s>div>p{
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+a{
   cursor: pointer;
 }

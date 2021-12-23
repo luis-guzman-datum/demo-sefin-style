@@ -29,6 +29,8 @@ import { CrudFormComponent } from './pages/crud/crud-form/crud-form.component';
 import { CrudListComponent } from './pages/crud/crud-list/crud-list.component';
 import { TypeT24Component } from './pages/type-t24/type-t24.component';
 import { AuthChekValidComponent } from './pages/auth-chek-valid/auth-chek-valid.component';
+import { MapaSitioComponent } from './pages/mapa-sitio/mapa-sitio.component';
+import { AuthValidComponent } from './pages/auth-valid/auth-valid.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { AuthChekValidComponent } from './pages/auth-chek-valid/auth-chek-valid.
     CrudListComponent,
     TypeT24Component,
     AuthChekValidComponent,
+    MapaSitioComponent,
+    AuthValidComponent,
   ],
   imports: [
     BrowserModule,

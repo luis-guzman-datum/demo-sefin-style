@@ -1,0 +1,181 @@
+<app-navbar></app-navbar>
+
+<main class="container-fluid">
+    <div class="row">
+     
+        <div class="col s12">
+            <br>
+            <nav>
+                <div class="nav-wrapper white ">
+                    <div class="col s12">
+                        <a (click)="infoPantalla.pantalla='lista'" class="breadcrumb blue-text text-darken-4">Lista de
+                            comisiones por bancos (Perido fiscal 2021)</a>
+                        <a *ngIf="infoPantalla.pantalla=='seleccionado'"
+                            class="breadcrumb grey-text text-darken-1 disabled">{{infoPantalla.selected.nombreColector}}
+                            - {{infoPantalla.selected.nombreRecaudador}} </a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col s12" *ngIf="infoPantalla.pantalla=='lista'">
+
+
+
+            <div class="row" *ngIf="getIngresosPorColectorData?.ingresosConfirmados">
+                <div class="col s12">
+                    <div class="card-panel">
+
+                        <h6 class="titulo-grafico">Comisiones por bancos</h6>
+                        <br>
+
+                        <div class="row">
+                            <div class="col  s12">
+                              
+
+                                <div class="input-field col offset-m6 m6 s12 " id="buscador">
+                                    <i class="material-icons prefix">search</i>
+                                    <input id="search" type="text" [(ngModel)]="search" name="search"
+                                        (ngModelChange)="p=1">
+                                    <label for="search">Buscar</label>
+                                    <span class="helper-text" data-error="wrong" data-success="right">
+                                        {{(getIngresosPorColectorData.ingresosConfirmados | filter:
+                                        search)?.length}} /
+                                        {{getIngresosPorColectorData.ingresosConfirmados.length}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col s12">
+                                <table class="responsive-table striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Banco</th>
+                                            <th>Recaudador</th>
+                                            <th>Monto</th>
+                                            <th>Comisión a pagar</th>
+                                            <th>Ver</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr
+                                            *ngFor="let d of (getIngresosPorColectorData.ingresosConfirmados | filter: search) | paginate: { itemsPerPage: 8, currentPage: p } ">
+
+                                            <td>{{d.nombreColector}}</td>
+                                            <td>{{d.nombreRecaudador}}</td>
+                                            <td>{{d.montoRecaudado | currency : 'L'}}</td>
+                                            <td>{{d.montoComisionAPagar | currency : 'L'}}</td>
+                                            <td>
+                                                <button (click)="seleccionarBanco(d)" id="seleccionar"
+                                                    class="btn blue btn-small" title="Ver">
+                                                    <i class="material-icons">visibility</i>
+                                                </button>
+                                            </td>
+
+                                        </tr>
+                                        <tr
+                                            *ngIf="(getIngresosPorColectorData.ingresosConfirmados | filter: search ).length==0">
+                                            <td colspan="7" class="center">No hay registros</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="center" id="pagination-controls">
+                                    <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+                                        (pageChange)="p = $event">
+                                    </pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="col s12" *ngIf="infoPantalla.pantalla=='seleccionado'">
+            <div class="row" *ngIf="getCierreBancoComisionesDetalleData?.detalleComisionDetalle">
+                <div class="col s12">
+                    <div class="card-panel">
+
+                        <h6 class="titulo-grafico">Comisiones por bancos</h6>
+                        <br>
+
+                        <div class="row">
+                            <div class="col  s12">
+
+                                <div class="col s6">
+                                    <h4>{{infoPantalla.selected.nombreColector}}</h4>
+                                    <h5>  {{infoPantalla.selected.nombreRecaudador}}</h5>
+                                    <h5> Total comisión: {{infoPantalla.selected.montoComisionAPagar|currency:"L"}}</h5>
+                                </div>
+                                <div class="input-field col  m6 s12 " id="buscador2">
+                                    <i class="material-icons prefix">search</i>
+                                    <input id="search2" type="text" [(ngModel)]="search2" name="search2"
+                                        (ngModelChange)="p2=1">
+                                    <label for="search2">Buscar</label>
+                                    <span class="helper-text" data-error="wrong" data-success="right">
+                                        {{(getCierreBancoComisionesDetalleData?.detalleComisionDetalle| filter:
+                                        search2)?.length}} /
+                                        {{getCierreBancoComisionesDetalleData?.detalleComisionDetalle.length}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col s12">
+                                <table class="responsive-table striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha R.</th>
+                                            <th>Recaudador</th>
+                                            <th>Rubro</th>
+                                            <th>Monto</th>
+                                            <th>Comisión</th>
+                                            <th>Porcentaje</th>
+                                            <th>Banco</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr
+                                            *ngFor="let d of (getCierreBancoComisionesDetalleData?.detalleComisionDetalle | filter: search) | paginate: { id: 'paginationcontrols22' ,itemsPerPage: 8, currentPage: p2 } ">
+
+                                            <td>{{d.fechaRecaudacion}}</td>
+                                            <td>{{d.nombreRecaudador}}</td>
+                                            <td>{{d.rubro }}</td>
+                                            <td>{{d.monto | currency : 'L'}}</td>
+                                            <td>{{d.calculoComision | currency : 'L'}}</td>
+                                            <td>{{d.porcentaje*100}}%</td>
+                                            <td>{{d.nombreColector}}</td>
+
+                                        </tr>
+                                        <tr
+                                            *ngIf="(getCierreBancoComisionesDetalleData?.detalleComisionDetalle | filter: search ).length==0">
+                                            <td colspan="7" class="center">No hay registros</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="center" id="pagination-controls2">
+                                    <pagination-controls id="paginationcontrols22" previousLabel="Anterior"
+                                        nextLabel="Siguiente" (pageChange)="p2 = $event">
+                                    </pagination-controls>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</main>
+
+<app-footer></app-footer>

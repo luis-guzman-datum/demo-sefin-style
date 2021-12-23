@@ -1,0 +1,166 @@
+<app-navbar></app-navbar>
+
+<main class="container-fluid">
+    <div class="row">
+        <div class="col s12">
+            <h3 class="center">Autorización de registros</h3>
+        </div>
+        <div class="col s12">
+                <div class="nav-content white center">
+                    <ul class="tabs tabs-transparent center">
+                        <li class="tab center"><a class="grey-text center" href="#test1">Registros autorizados</a></li>
+                        <li class="tab"><a class="grey-text active" href="#test2">Registros pendientes de
+                                autorización</a></li>
+                    </ul>
+                </div>
+
+
+                <div id="test1" class="col s12">
+
+                    
+
+                    <div class="row">
+                        <div class="col m4 s12">
+                            <br>
+                            <button id="clickAgregar" class="btn blue">
+                                <i class="material-icons left">add</i>
+                                Nuevo Registro
+                            </button>
+                        </div>
+                        <div class="col m8 s12">
+                            <div class="input-field col offset-m6 m6 s12 " id="buscador">
+                                <i class="material-icons prefix">search</i>
+                                <input id="search" type="text" [(ngModel)]="search" name="search" (ngModelChange)="p=1">
+                                <label for="search">Buscar</label>
+                                <span class="helper-text" data-error="wrong" data-success="right">
+                                    {{(lista | filter: search)?.length}} /
+                                    {{lista.length}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col s12">
+                            <table class="responsive-table striped">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Recaudador</th>
+                                        <th>Descripción</th>
+                                        <th>Monto máximo</th>
+                                        <th>Monto mínimo</th>
+                                        <th>Valor por defecto</th>
+                                        <th>Procentaje</th>
+                                        <th>Creado por</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr *ngFor="let d of (lista | filter: search) | paginate: { itemsPerPage: 8, currentPage: p } ">
+                                        <td>{{d.id}}</td>
+                                        <td>{{d.codrecaudador.nombrerecaudador}}</td>
+                                        <td>{{d.descripcion}}</td>
+                                        <td>{{d.montomaximo   |currency:'L'}}</td>
+                                        <td>{{d.montominimo   |currency:'L'}}</td>
+                                        <td>{{d.valordefecto  |currency:'L'}}</td>
+                                        <td>{{d.porcentaje*100}}%</td>
+                                        <td>{{d.creadopor}}</td>
+                                        <td>
+                                            <button id="clickEditar" class="btn orange btn-small" title="Modificar"
+                                                >
+                                                <i class="material-icons">edit</i>
+                                            </button>
+                                            &nbsp;
+                                            <button id="clickEliminar" class="btn red btn-small" title="Eliminar"
+                                               >
+                                                <i class="material-icons">delete_forever</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="(lista | filter: search ).length==0">
+                                        <td colspan="4" class="center">No hay registros</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="center" id="pagination-controls">
+                                <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event">
+                                </pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div id="test2" class="col s12">
+                    <div class="row">
+                        <div class="col m12 s12">
+                            <div class="input-field col offset-m6 m6 s12 " id="buscador">
+                                <i class="material-icons prefix">search</i>
+                                <input id="search" type="text" [(ngModel)]="search" name="search" (ngModelChange)="p=1">
+                                <label for="search">Buscar</label>
+                                <span class="helper-text" data-error="wrong" data-success="right">
+                                    {{(lista | filter: search)?.length}} /
+                                    {{lista.length}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col s12">
+                            <table class="responsive-table striped">
+                                <thead>
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Recaudador</th>
+                                        <th>Descripción</th>
+                                        <th>Monto máximo</th>
+                                        <th>Monto mínimo</th>
+                                        <th>Valor por defecto</th>
+                                        <th>Procentaje</th>
+                                        <th>Creado por</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                        
+                                <tbody>
+                                    <tr *ngFor="let d of (listaP | filter: search) | paginate: { itemsPerPage: 8, currentPage: p } ">
+                                        <td>{{d.id}}</td>
+                                        <td>{{d.codrecaudador.nombrerecaudador}}</td>
+                                        <td>{{d.descripcion}}</td>
+                                        <td>{{d.montomaximo   |currency:'L'}}</td>
+                                        <td>{{d.montominimo   |currency:'L'}}</td>
+                                        <td>{{d.valordefecto  |currency:'L'}}</td>
+                                        <td>{{d.porcentaje*100}}%</td>
+                                        <td>{{d.creadopor}}</td>
+                                        <td>
+                                            <button id="clickEditar" class="btn green darken-2 btn-small" title="Aprobar"
+                                                >
+                                                <i class="material-icons">download_done</i>
+                                            </button>
+                                            &nbsp;
+                                            <button id="clickEditar" class="btn blue darken-2 btn-small" title="Ver"
+                                                >
+                                                <i class="material-icons">remove_red_eye</i>
+                                            </button>
+                                            &nbsp;
+                                            <button id="clickEliminar" class="btn red btn-small" title="Rechazar"
+                                               >
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="(lista | filter: search ).length==0">
+                                        <td colspan="4" class="center">No hay registros</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="center" id="pagination-controls">
+                                <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event">
+                                </pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br>
+        </div>
+    </div>
+</main>

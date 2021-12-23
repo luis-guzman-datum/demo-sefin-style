@@ -4,12 +4,47 @@
     <div class="row">
         <div class="col s12">
             <h1>Gráficas</h1>
+            <h3>Apache ECharts</h3>
+            <p class="flow-text">
+                Una biblioteca de visualización de JavaScript de código abierto 
+                <a href="https://echarts.apache.org/examples/en/index.html" target="_blank">Ver más</a>
+            </p>
         </div>
+
         <div class="col m6 s12">
+            <div class="card-panel">
+                <div id="chart2" echarts [options]="chartLine" theme="macarons" class="demo-chart"></div>
+            </div>
+        </div>
+
+        <div class="col m6 s12">
+            <div class="card-panel">
+                <div id="chart3" echarts [options]="populateChart" theme="macarons" class="demo-chart"></div>
+            </div>
+        </div>
+
+        <div class="col m6 s12">
+            <div class="card-panel">
+             <div id="chart55" echarts [options]="precipitacionChart" theme="macarons" class="demo-chart"></div>
+            </div>
+         </div>
+
+        <div class="col m6 s12">
+           <div class="card-panel">
             <div id="chart1" echarts [options]="options" theme="macarons" class="demo-chart"></div>
+           </div>
         </div>
+
         <div class="col m6 s12">
+            <div class="card-panel">
+             <div id="chart1" echarts [options]="chartRadius" theme="macarons" class="demo-chart"></div>
+            </div>
+         </div>
+
+        <div class="col m6 s12">
+           <div class="card-panel">
             <div echarts [options]="options2" [merge]="updateOptions" class="demo-chart"></div>
+           </div>
         </div>
 
        

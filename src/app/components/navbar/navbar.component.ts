@@ -9,6 +9,7 @@ declare var $: any;
 })
 export class NavbarComponent implements OnInit {
   menuSidebar: PerfilUsuario= MenuSidebar;
+  
   constructor() {}
 
   ngOnInit(): void {}

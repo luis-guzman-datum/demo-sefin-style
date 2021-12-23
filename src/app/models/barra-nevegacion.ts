@@ -16,34 +16,40 @@ export const MenuSidebar: PerfilUsuario = {
       opciones: [],
     },
     {
-      titulo: 'Registros',
-      icono: 'description',
-      opciones: [
-        {
-          link: '/registros',
-          icono: 'table_rows',
-          texto: 'Registros & HTTP',
-        },
-        {
-          link: '/crud',
-          icono: 'ballot',
-          texto: 'CRUD',
-        },
-        {
-          link: '/type-t24',
-          icono: 'list_alt',
-          texto: 'Tipo T24',
-        },
-        {
-          link: '/auth-chek-valid',
-          icono: 'verified',
-          texto: 'Auth-Check-Valid',
-        },
-      ],
+      link: '/mapa-sitio',
+      icono: 'list_alt',
+      titulo: 'Mapa de sitio',
+      opciones: [],
     },
     {
+      link: '/charts',
+      icono: 'insert_chart',
+      titulo: 'Estadistica',
+      opciones: [],
+    },
+    {
+      link: '/registros',
+      icono: 'table_rows',
+      titulo: 'Registros & HTTP',
+      opciones: [],
+    },
+    {
+      link: '/crud',
+      icono: 'ballot',
+      titulo: 'CRUD & Tour',
+      opciones: [],
+    },
+
+    {
+      link: '/auth-valid',
+      icono: 'how_to_reg',
+      titulo: 'Registros & Autorizaciones',
+      opciones: [],
+    },
+  
+    {
       titulo: 'Más',
-      icono: 'whatshot',
+      icono: 'expand_more',
       opciones: [
         {
           link: '/forms',
@@ -62,17 +68,7 @@ export const MenuSidebar: PerfilUsuario = {
         },
       ],
     },
-    {
-      titulo: 'Gráficos',
-      icono: 'insert_chart',
-      opciones: [
-        {
-          link: '/charts',
-          icono: 'insert_chart',
-          texto: 'Estadistica',
-        },
-      ],
-    }
+    
   ],
 };
 
@@ -95,9 +91,38 @@ export interface Opciones {
   link?: string;
   texto?: string;
   icono?: string;
+  opciones?: Opciones2[];
 }
 
 export interface Apps {
+    link?: string;
+    texto?: string;
+    icono?: string;
+   
+  }
+
+  export interface Opciones2 {
+    link?: string;
+    texto?: string;
+    icono?: string;
+    opciones?: Opciones3[];
+  }
+  
+  export interface Opciones3 {
+    link?: string;
+    texto?: string;
+    icono?: string;
+    opciones?: Opciones4[];
+  }
+  
+  export interface Opciones4 {
+    link?: string;
+    texto?: string;
+    icono?: string;
+    opciones?: Opciones5[];
+  }
+
+  export interface Opciones5 {
     link?: string;
     texto?: string;
     icono?: string;

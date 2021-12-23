@@ -18,10 +18,15 @@
                 <div class="collapsible-body">
                     <ul>
                         <li *ngFor="let o of m.opciones">
+
                             <a [routerLink]="[o.link]">
                                 <i class="material-icons">{{o.icono}}</i>
                                 {{o.texto}}
                             </a>
+
+
+
+
                         </li>
                     </ul>
                 </div>
@@ -36,8 +41,86 @@
                 </div>
             </ng-container>
         </li>
-    </ul>
 
+        <li>
+            <div class="collapsible-header"><i class="material-icons">expand_more</i>Hasta 5 Niveles</div>
+            <div class="collapsible-body">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">expand_more</i>Nivel 2</div>
+                        <div class="collapsible-body">
+                            <ul class="collapsible">
+                                <li>
+                                    <a [routerLink]="['']">
+                                        <i class="material-icons">link</i>
+                                        Link Nivel 2 Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">expand_more</i>Nivel 3
+                                    </div>
+                                    <div class="collapsible-body">
+                                        <ul class="collapsible">
+
+                                            <li>
+                                                <a [routerLink]="['']">
+                                                    <i class="material-icons">link</i>
+                                                    Link Nivel 3 Home
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a [routerLink]="['']">
+                                                    <i class="material-icons">link</i>
+                                                    Link Nivel 3 Home
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <div class="collapsible-header"><i
+                                                        class="material-icons">expand_more</i>Nivel 4</div>
+                                                <div class="collapsible-body">
+                                                    <ul class="collapsible">
+
+                                                        <li>
+                                                            <a [routerLink]="['']">
+                                                                <i class="material-icons">link</i>
+                                                                Link Nivel 4 Home
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a [routerLink]="['']">
+                                                                <i class="material-icons">link</i>
+                                                                Link Nivel 4 Home
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="collapsible-header"><i
+                                                                    class="material-icons">expand_more</i>Nivel 5</div>
+                                                            <div class="collapsible-body">
+                                                                <ul>
+                                                                    <li>
+                                                                        <a [routerLink]="['']">
+                                                                            <i class="material-icons">link</i>
+                                                                            Home
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
 </ul>
 
 
@@ -45,31 +128,97 @@
 
 
 
-<nav class="white">
-    <div id="side-opt" class="nav-wrapper">
-        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large grey-text text-darken-4">
-            <i class="material-icons">menu</i>
-        </a>
-        <a href="#" class="brand-logo  grey-text text-darken-4">
-            SEFIN
-        </a>
+<div class="navbar-fixed">
+    <nav class="white">
+        <div id="side-opt" class="nav-wrapper">
 
-        <ul class="right  ">
-            <li class="black-text">
-                <a class='dropdown-trigger black-text ' href='#' data-target='dropdown1'>
-                    <i class="material-icons right">view_module</i> Mis Apps
-                </a>
+            <a href="#" data-target="slide-out"
+                class=" sidenav-trigger show-on-large brand-logo  grey-text text-darken-4">
+                <i class="material-icons">menu</i> SEFIN
+            </a>
 
-            </li>
-        </ul>
-    </div>
-</nav>
+            <ul class="right  hide-on-small-only">
+
+                <li class="black-text" id="chatlink">
+                    <a class='black-text ' [routerLink]="['/chat']" data-target='notifications'>
+                        SEFIN CHAT <i class="material-icons right">duo</i>
+                    </a>
+                </li>
+                <li class="black-text" id="notylink">
+                    <a class='dropdown-trigger black-text ' href='#' data-target='notifications'>
+                        Notificaciones <span class="badge red white-text">14</span> <i
+                            class="material-icons right">notifications_active</i>
+                    </a>
+                </li>
+                <li class="black-text" id='appLink'>
+                    <a class='dropdown-trigger black-text ' href='#' data-target='dropdown1'>
+                        <i class="material-icons right">view_module</i> Mis Apps
+                    </a>
+                </li>
+                <li class="black-text">
+                    <a class='dropdown-trigger black-text ' href='#' data-target='usuario'>
+                        Luis Guzman &nbsp; &nbsp; &nbsp;<img src="assets/images/alvin.png" class="user right">
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 
-<!-- Dropdown Structure -->
+
 <ul id='dropdown1' class='dropdown-content'>
     <li><a class="disabled">MIS APPS</a></li>
     <li class="divider" tabindex="-1"></li>
     <li *ngFor="let m of menuSidebar.apps"><a [routerLink]="[m.link]"> <i
                 class="material-icons">{{m.icono}}</i>{{m.texto}}</a></li>
+</ul>
+
+<ul id='notifications' class='dropdown-content'>
+    <li><a class="disabled"> Notificaciones <i class="material-icons  center">notifications_active</i></a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li>
+        <a [routerLink]="['/chat']">
+            1. Nuevo ingreso en el sistema
+        </a>
+    </li>
+
+    <li>
+        <a [routerLink]="['/chat']">
+            2. Mensaje nuevo
+        </a>
+    </li>
+
+    <li>
+        <a [routerLink]="['/chat']">
+            3. Otra notificación
+        </a>
+    </li>
+</ul>
+
+
+<ul id='usuario' class='dropdown-content'>
+    <li>
+        <a class="disabled center">
+            LUIS GUZMAN
+            <br>
+            <img src="assets/images/alvin.png" class="user">
+            <br>
+           <small>Administrador</small>
+           <br>
+           <small>SEFIN</small>
+
+        </a>
+    </li>
+    <li class="divider" tabindex="-1"></li>
+    <li>
+        <a href="/home"> <i class="material-icons">manage_accounts</i>Perfil</a>
+    </li>
+    <li>
+        <a href="/home"> <i class="material-icons">email</i>Outlok</a>
+    </li>
+    <li>
+        <a href="/home"> <i class="material-icons">logout</i>Cerrar Sesión</a>
+    </li>
 </ul>
