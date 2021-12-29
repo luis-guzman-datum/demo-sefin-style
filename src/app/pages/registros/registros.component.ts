@@ -32,6 +32,9 @@ export class RegistrosComponent implements OnInit {
     this.getUsers();
   }
 
+
+  //metodo que ejeuta una peticion http de tipo get para traer publicaciones, estas publicaciones son evaluadas y 
+  // colocadas en en array
   getPosts() {
     this.api.getPosts().subscribe(
       (response) => {
@@ -43,6 +46,7 @@ export class RegistrosComponent implements OnInit {
     );
   }
 
+  //mmetodo que acciona un services para una peticion http, este obtiene una lista de usaurios
   getUsers() {
     this.api.getUsers().subscribe(
       (response) => {
