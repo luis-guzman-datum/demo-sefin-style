@@ -15,6 +15,8 @@ export class CrudListComponent implements OnInit {
   @Output() clickModificar = new EventEmitter();
   @Output() clickEliminar = new EventEmitter();
 
+
+  //variable para filtro y paginancion
   search = '';
   p: number = 1;
 

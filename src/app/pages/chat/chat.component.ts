@@ -6,14 +6,18 @@ declare var $: any;
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
+
+  //variable para SPA mover de una pantalla a otra
   pantalla = 'mensajes';
 
+  //caompo donde se digita el msj
   mensaje = '';
 
   constructor() {}
 
   ngOnInit(): void {}
 
+  //lista de msjs previos
   mensajes: any[] = [
     {
       estado: 'R',
@@ -29,6 +33,7 @@ export class ChatComponent implements OnInit {
     },
   ];
 
+  //simulacion de envio de msjs
   enviar() {
     let m = {
       estado: 'E',

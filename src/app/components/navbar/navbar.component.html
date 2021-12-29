@@ -11,27 +11,20 @@
     </li>
 
     <ul class="collapsible">
-
         <li *ngFor="let m of menuSidebar.menu">
             <ng-container *ngIf="m.opciones?.length!=0">
                 <div class="collapsible-header"><i class="material-icons">{{m.icono}}</i>{{m.titulo}}</div>
                 <div class="collapsible-body">
                     <ul>
                         <li *ngFor="let o of m.opciones">
-
                             <a [routerLink]="[o.link]">
                                 <i class="material-icons">{{o.icono}}</i>
                                 {{o.texto}}
                             </a>
-
-
-
-
                         </li>
                     </ul>
                 </div>
             </ng-container>
-
             <ng-container *ngIf="m.opciones?.length==0">
                 <a [routerLink]="[m.link]" class="collapsible-header">
                     <i class="material-icons">{{m.icono}}</i>
@@ -41,7 +34,7 @@
                 </div>
             </ng-container>
         </li>
-
+        <!-- Colapse expandible hasta 5 niveles -->
         <li>
             <div class="collapsible-header"><i class="material-icons">expand_more</i>Hasta 5 Niveles</div>
             <div class="collapsible-body">
@@ -130,15 +123,12 @@
 
 <div class="navbar-fixed">
     <nav class="white">
-        <div id="side-opt" class="nav-wrapper">
-
+        <div id="side-opt" class="nav-wrapper white">
             <a href="#" data-target="slide-out"
                 class=" sidenav-trigger show-on-large brand-logo  grey-text text-darken-4">
                 <i class="material-icons">menu</i> SEFIN
             </a>
-
             <ul class="right  hide-on-small-only">
-
                 <li class="black-text" id="chatlink">
                     <a class='black-text ' [routerLink]="['/chat']" data-target='notifications'>
                         SEFIN CHAT <i class="material-icons right">duo</i>
@@ -151,30 +141,52 @@
                     </a>
                 </li>
                 <li class="black-text" id='appLink'>
-                    <a class='dropdown-trigger black-text ' href='#' data-target='dropdown1'>
+                    <a class='dropdown-trigger black-text ' href='#' data-target='listaApps'>
                         <i class="material-icons right">view_module</i> Mis Apps
+                    </a>
+                </li>
+                <li class="black-text" id='appPeriodo'>
+                    <a class='dropdown-trigger black-text ' href='#' data-target='periodo'>
+                        <i class="material-icons right">date_range</i>{{periodo}}
                     </a>
                 </li>
                 <li class="black-text">
                     <a class='dropdown-trigger black-text ' href='#' data-target='usuario'>
-                        Luis Guzman &nbsp; &nbsp; &nbsp;<img src="assets/images/alvin.png" class="user right">
+                        <img src="assets/images/alvin.png" class="user right">
+                        <span class="datos-user uno">
+                            <b>Luis Guzman</b>
+                        </span>
+                        <span class="datos-user">Aministrador</span>
+                        <span class="datos-user">
+                            <b>SEFIN</b>
+                        </span>
                     </a>
-
                 </li>
             </ul>
         </div>
+
     </nav>
+    <br>
+
+
 </div>
 
 
 
-<ul id='dropdown1' class='dropdown-content'>
+<!-- Aca pueden iterar desde un services la lista de apps -->
+<ul id='listaApps' class='dropdown-content'>
     <li><a class="disabled">MIS APPS</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li *ngFor="let m of menuSidebar.apps"><a [routerLink]="[m.link]"> <i
-                class="material-icons">{{m.icono}}</i>{{m.texto}}</a></li>
+    <li *ngFor="let m of menuSidebar.apps">
+        <a [routerLink]="[m.link]">
+            <i class="material-icons">{{m.icono}}</i>
+            {{m.texto}}
+        </a>
+    </li>
 </ul>
 
+
+<!-- Aca se puede iterar desde un services la lista de notificaciones para el chat -->
 <ul id='notifications' class='dropdown-content'>
     <li><a class="disabled"> Notificaciones <i class="material-icons  center">notifications_active</i></a></li>
     <li class="divider" tabindex="-1"></li>
@@ -183,13 +195,11 @@
             1. Nuevo ingreso en el sistema
         </a>
     </li>
-
     <li>
         <a [routerLink]="['/chat']">
             2. Mensaje nuevo
         </a>
     </li>
-
     <li>
         <a [routerLink]="['/chat']">
             3. Otra notificación
@@ -197,7 +207,7 @@
     </li>
 </ul>
 
-
+<!-- Aca se puede iterar el card de la configuracion de usaurios -->
 <ul id='usuario' class='dropdown-content'>
     <li>
         <a class="disabled center">
@@ -205,20 +215,41 @@
             <br>
             <img src="assets/images/alvin.png" class="user">
             <br>
-           <small>Administrador</small>
-           <br>
-           <small>SEFIN</small>
-
+            <small>Administrador</small>
+            <br>
+            <small>SEFIN</small>
+            <br>
         </a>
     </li>
     <li class="divider" tabindex="-1"></li>
     <li>
-        <a href="/home"> <i class="material-icons">manage_accounts</i>Perfil</a>
+        <a [routerLink]="['/administrador-perfil']" routerLinkActive="grey lighten-3"> <i
+                class="material-icons">manage_accounts</i>Perfil</a>
     </li>
     <li>
         <a href="/home"> <i class="material-icons">email</i>Outlok</a>
     </li>
     <li>
         <a href="/home"> <i class="material-icons">logout</i>Cerrar Sesión</a>
+    </li>
+</ul>
+
+
+<!-- Aca se puede iterar la lista de periodos -->
+<ul id='periodo' class='dropdown-content'>
+    <li>
+        <a (click)="periodo=2022"> 2022</a>
+    </li>
+
+    <li>
+        <a (click)="periodo=2021"> 2021</a>
+    </li>
+
+    <li>
+        <a (click)="periodo=2020"> 2020</a>
+    </li>
+
+    <li>
+        <a (click)="periodo=2019"> 2019</a>
     </li>
 </ul>

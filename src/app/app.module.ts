@@ -27,10 +27,10 @@ import { CrudComponent } from './pages/crud/crud.component';
 import { SiNoComponent } from './components/si-no/si-no.component';
 import { CrudFormComponent } from './pages/crud/crud-form/crud-form.component';
 import { CrudListComponent } from './pages/crud/crud-list/crud-list.component';
-import { TypeT24Component } from './pages/type-t24/type-t24.component';
-import { AuthChekValidComponent } from './pages/auth-chek-valid/auth-chek-valid.component';
 import { MapaSitioComponent } from './pages/mapa-sitio/mapa-sitio.component';
 import { AuthValidComponent } from './pages/auth-valid/auth-valid.component';
+import { AdministradorClasificadorComponent } from './pages/administrador-clasificador/administrador-clasificador.component';
+import { AdministradorPerfilComponent } from './pages/administrador-perfil/administrador-perfil.component';
 
 @NgModule({
   declarations: [
@@ -50,10 +50,10 @@ import { AuthValidComponent } from './pages/auth-valid/auth-valid.component';
     SiNoComponent,
     CrudFormComponent,
     CrudListComponent,
-    TypeT24Component,
-    AuthChekValidComponent,
     MapaSitioComponent,
     AuthValidComponent,
+    AdministradorClasificadorComponent,
+    AdministradorPerfilComponent,
   ],
   imports: [
     BrowserModule,

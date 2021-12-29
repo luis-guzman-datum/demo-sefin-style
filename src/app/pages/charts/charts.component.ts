@@ -9,6 +9,8 @@ import { ThemeOption } from 'ngx-echarts';
 })
 export class ChartsComponent implements OnInit, AfterViewInit {
 
+  //configuracion de grafico
+
   options:any = {
     color: ['#3398DB'],
     tooltip: {
@@ -46,6 +48,8 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       },
     ],
   };
+
+  //configuracion de grafico 2
 
   options2: any;
   updateOptions: any;
@@ -114,6 +118,9 @@ export class ChartsComponent implements OnInit, AfterViewInit {
     ]
   };
 
+
+  //configuracion de grafico de World Population
+
   populateChart:any = {
     title: {
       text: 'World Population'
@@ -153,6 +160,8 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       }
     ]
   };
+
+  //configuracion de grafico precipitacionChart
 
   precipitacionChart:any = {
     color: ['#3398DB','#052c69' ],
@@ -232,6 +241,8 @@ export class ChartsComponent implements OnInit, AfterViewInit {
   };
 
 
+
+  //grafico de tipo radio
   chartRadius:any = {
 
     color: ['#3398DB','#052c69' , '#8d7435', '#545454', "#dcd2a3"],
@@ -282,6 +293,8 @@ export class ChartsComponent implements OnInit, AfterViewInit {
   constructor() {}
 
   ngOnInit(){ this.data = [];
+
+    //consfigura data
     this.now = new Date(1997, 9, 3);
     this.value = Math.random() * 1000;
 
@@ -289,7 +302,7 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       this.data.push(this.randomData());
     }
 
-    // initialize chart options:
+    // inicia configuracion de grafico online:
     this.options2 = {
       title: {
         text: 'Dynamic Data + Time Axis'
@@ -327,14 +340,14 @@ export class ChartsComponent implements OnInit, AfterViewInit {
       }]
     };
 
-    // Mock dynamic data:
+    // Data dinamica
     this.timer = setInterval(() => {
       for (let i = 0; i < 5; i++) {
         this.data.shift();
         this.data.push(this.randomData());
       }
 
-      // update series data:
+      // actualizacion de series de data
       this.updateOptions = {
         series: [{
           data: this.data

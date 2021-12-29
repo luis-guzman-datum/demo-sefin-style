@@ -29,11 +29,9 @@ export const OpcionesPorDefecto: Step.StepOptions = {
 export const TourCrud: Step.StepOptions[] = [
   {
     attachTo: {
-  
-      on: 'bottom',
+      on: 'bottom', //posicion del tur
     },
     buttons: [
-      /*   Botones.cancelar, */
       Botones.siguiente,
     ],
     classes: 'grey-text card',   
@@ -50,7 +48,6 @@ export const TourCrud: Step.StepOptions[] = [
       on: 'bottom',
     },
     buttons: [
-      /*   Botones.cancelar, */
       Botones.anterior,
       Botones.siguiente,
     ],

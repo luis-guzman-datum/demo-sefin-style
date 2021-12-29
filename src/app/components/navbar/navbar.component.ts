@@ -8,7 +8,11 @@ declare var $: any;
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
+
+  // lista de opciones de menu que pueden ser usados en el sistema
+  // esta se puede dejar local o consumir desde un services
   menuSidebar: PerfilUsuario= MenuSidebar;
+  periodo=2021;
   
   constructor() {}
 
@@ -18,5 +22,6 @@ export class NavbarComponent implements OnInit {
     $('.sidenav').sidenav();
     $('.collapsible').collapsible();
     $('.dropdown-trigger').dropdown();
+    $('select').formSelect();
   }
 }

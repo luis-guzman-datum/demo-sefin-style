@@ -9,9 +9,11 @@ declare var $: any;
 })
 export class AuthValidComponent implements OnInit, AfterViewInit {
 
+  // variables de configuracion de paginador y filtro
   search = '';
   p: number = 1;
 
+  //lista de datos autorizados
   lista:any[]=[
     {
       "id": 4,
@@ -111,6 +113,7 @@ export class AuthValidComponent implements OnInit, AfterViewInit {
     }
   ];
 
+  //lista de datos pendientes de autorizar
   listaP:any[]=[
     {
       "id": 6,

@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ListaDeSistemasConAcceso,
-  SistemaModel,
-} from 'src/app/models/sistemas';
+
 
 @Component({
   selector: 'app-home',
@@ -11,7 +8,6 @@ import {
 })
 export class HomeComponent implements OnInit {
   
-  listaSistemas: SistemaModel[] = ListaDeSistemasConAcceso;
 
   constructor() {}
 

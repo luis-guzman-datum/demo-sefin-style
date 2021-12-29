@@ -1,19 +1,22 @@
 
 
-/* You can add global styles to this file, and also import other style files */
+/*Importado de google icons para uso en web */
 @import 'material-icons/iconfont/material-icons.css';
 
+
+/**
+* Variables de configuracion de paleta de colores
+**/
 $blue-darken-4: #052c69;
 $blue-darken-3: #0c4184;
 $blue-darken-2: #132e7b;
 $blue: #052c69;
 $white: #fff;
-$orange: #8d7435;
-$orange-light-1: #dcd2a3;
+$modificacion: #8d7435;
+$modificacion-light-1: #dcd2a3;
 $grey: #545454;
 $grey-light-1: #f4f4f4;
 $grey-light-2: #b4b6be;
-
 $colorTituloGrafico:#464646;
 
 
@@ -38,7 +41,7 @@ main {
 
 
 .orange{
-  background: $orange !important;
+  background: $modificacion !important;
 }
 
 .shepherd-header{
@@ -139,24 +142,24 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 }
 
 .datepicker-date-display {
-  background-color: $orange;
+  background-color: $modificacion;
 }
 
 .datepicker-cancel,
 .datepicker-clear,
 .datepicker-today,
 .datepicker-done {
-  color: $orange;
+  color: $modificacion;
 }
 
 .datepicker-table td.is-today {
-  color: $orange;
+  color: $modificacion;
 
-  border-bottom: $orange solid 2px;
+  border-bottom: $modificacion solid 2px;
 }
 
 .datepicker-table td.is-selected {
-  background-color: $orange;
+  background-color: $modificacion;
   color: #fff;
 }
 
@@ -232,3 +235,27 @@ button:focus {
 a{
   cursor: pointer;
 }
+
+.user {
+  display: inline-block; 
+  max-height: 45px;
+  border-radius: 50%;
+ // margin-top: 10px;
+  }
+
+  .datos-user{
+    font-size: 11px;
+    display: block;
+    vertical-align: top;
+    width: 150px;
+    line-height: 18px;
+    color: $grey;
+  }
+
+  a.dropdown-trigger>span.uno{
+    margin-top: 5px;
+  }
+
+  div.opt>a{
+    margin-right: 10px;
+  }

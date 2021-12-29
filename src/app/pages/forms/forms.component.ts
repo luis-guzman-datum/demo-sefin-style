@@ -22,6 +22,8 @@ export class FormsComponent implements OnInit {
 
   ngAfterViewInit(){
     $('select').formSelect();
+
+    //convertir calendar a español
     $('.datepicker').datepicker({
       format: 'dd/mm/yyyy',
       i18n: {

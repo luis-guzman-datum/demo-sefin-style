@@ -1,0 +1,82 @@
+<app-navbar></app-navbar>
+<main class="container">
+    <div class="row">
+        <div class="col s12">
+            <h3>ADMINISTRADOR DE CLASIFICADOR </h3>
+            <div class="divider"></div>
+            <br>
+        </div>
+        <div class="col s12">
+            <div class="row">
+                <div class="col m8 opt">
+                    <div><br><br></div>
+                    <a class="waves-effect waves-light btn blue" title="Crear"><i class="material-icons">add_circle</i></a>
+                    <a class="waves-effect waves-light btn blue" title="Carga Masiva"><i class="material-icons">upload</i></a>
+                    <a class="waves-effect waves-light btn orange" title="Modificar"><i class="material-icons">edit</i></a>
+                    <a class="waves-effect waves-light btn red" title="Eliminar"><i class="material-icons">delete</i></a>
+                    <a class="waves-effect waves-light btn green" title="Aprobar"><i class="material-icons">check_circle</i></a>
+                    <a class="waves-effect waves-light btn red" title="Rechazar"><i class="material-icons">dangerous</i></a>
+                    <a class="waves-effect waves-light btn green" title="Autorizar"><i class="material-icons">how_to_reg</i></a>
+                    <a class="waves-effect waves-light btn grey" title="Imprimir"><i class="material-icons">print</i></a>
+                </div>
+                <div class="col  m4 ">
+                    <div class="input-field col s12 " id="buscador">
+                        <i class="material-icons prefix">search</i>
+                        <input id="search" type="text" [(ngModel)]="search" name="search" (ngModelChange)="p=1">
+                        <label for="search">Buscar</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">
+                            {{(clasificadorData | filter: search)?.length}} /
+                            {{clasificadorData.length}}
+                        </span>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <table class="responsive-table striped">
+                        <thead>
+                            <tr>
+                                <th>Seleccionado</th>
+                                <th>No. Doc</th>
+                                <th>Operación</th>
+                                <th>Justificación</th>
+                                <th>Estado</th>
+                                <th>Auditoria</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr
+                                *ngFor="let d of (clasificadorData | filter: search) | paginate: { itemsPerPage: 6, currentPage: p } " [ngClass]="{'green lighten-5': d.selected}">
+                                <td class="center">
+                                    <p>
+                                        <label >
+                                            <input type="checkbox"  [checked]="d.selected"  (change)="d.selected = !d.selected" />
+                                            <span></span>
+                                        </label>
+                                    </p>
+                                </td>
+                                <td>{{d.noDoc}}</td>
+                                <td>{{d.opeacion}}</td>
+                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, neque.</td>
+                                <td>{{d.estado}}</td>
+                                <td>
+                                    <i class="material-icons center" [ngClass]="{'green-text text-darken-2': d.auditoria}">
+                                        add_moderator
+                                        </i>
+                                  
+                                </td>
+
+                            </tr>
+                            <tr *ngIf="(clasificadorData | filter: search ).length==0">
+                                <td colspan="4" class="center">No hay registros</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="center" id="pagination-controls">
+                        <pagination-controls previousLabel="Anterior" nextLabel="Siguiente" (pageChange)="p = $event">
+                        </pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

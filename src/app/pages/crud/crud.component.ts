@@ -15,6 +15,7 @@ declare var $: any;
   styleUrls: ['./crud.component.scss'],
 })
 export class CrudComponent implements OnInit {
+  //variable que controla el SPA para mostrar contenido
   pantalla: PantallaModel = { pantalla: 'lista' }; // lista, formulario
 
   listaUsers: UserModel[] = [];

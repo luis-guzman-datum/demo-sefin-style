@@ -28,6 +28,12 @@ export const MenuSidebar: PerfilUsuario = {
       opciones: [],
     },
     {
+      link: '/administrador-clasificador',
+      icono: 'admin_panel_settings',
+      titulo: 'Administrador de clasificador',
+      opciones: [],
+    },
+    {
       link: '/registros',
       icono: 'table_rows',
       titulo: 'Registros & HTTP',

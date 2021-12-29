@@ -1,3 +1,7 @@
+/**
+ * Tipo: PIPE 
+ * Descripción: Para realizar filtro de registros de cualquier array
+ */
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
@@ -6,12 +10,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: any[], filter: string) {
+  transform(listaDeDatos: any[], textoBusqueda: string) {
 
-    if (!items || !filter) {
-      return items;
+    if (!listaDeDatos || !textoBusqueda) {
+      return listaDeDatos;
     }
-    return items.filter(item => JSON.stringify(item).toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+    return listaDeDatos.filter(item => JSON.stringify(item).toLowerCase().indexOf(textoBusqueda.toLowerCase()) !== -1)
 
   }
 

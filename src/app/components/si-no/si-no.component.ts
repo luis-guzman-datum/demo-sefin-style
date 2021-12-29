@@ -25,8 +25,7 @@ export class SiNoComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    $('.modal').modal();
-    
+    $('.modal').modal();   
     $('.modal').modal({'dismissible':false});
     $('.modal').modal('open');
   }

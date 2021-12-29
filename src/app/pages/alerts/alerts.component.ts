@@ -33,6 +33,8 @@ export class AlertsComponent implements OnInit {
     $('.modal').modal('hide');
   }
 
+  //Opciones para mostrar alertas color verde, amarillo, rojo, azul
+
   warn(){
     this._notify.warn('Titulo', 'Cuerpo del mensaje');
   }
